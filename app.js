@@ -31,30 +31,67 @@ var firstAndPike = {
 firstAndPike.calcRandCustomersPerHour();
 firstAndPike.calcTotalCookiesPerHour();
 
-for (var k = 0; k < hours.le; k++) {
-  var totalCookiesPerHour = document.getElementById('firstAndPike');
-  var firstAndPikeLi = document.createElement('li');
-  firstAndPikeLi.textContent = hours[k] + firstAndPike.totalCookiesPerHour[k];
-  console.log(totalCookiesPerHour);
+function firstAndPikeResults () {
+  for (var k = 0; k < hours.length; k++) {
+    var totalCookiesPerHour = document.getElementById('firstAndPike');
+    var firstAndPikeLi = document.createElement('li');
+    firstAndPikeLi.textContent = hours[k] + ': ' + firstAndPike.totalCookiesPerHour[k] + ' cookies';
+    console.log(totalCookiesPerHour);
+    totalCookiesPerHour.appendChild(firstAndPikeLi);
+  };
+  firstAndPikeLi.textContent = 'Total cookies for the day is ' + firstAndPike.totalDailySalesPerHour + '.';
   totalCookiesPerHour.appendChild(firstAndPikeLi);
-};
+}
 
+firstAndPikeResults();
 
 console.log(firstAndPike);
 
 
+
 //SeaTac Airport
-// var seatacAirport = {
-//   minCustPerHour: 3,
-//   maxCustPerHour: 24,
-//   avgCookiesPerCust: 1.2,
-//   randCustomersPerHour: [],
-//   calcRandCustomersPerHour: function() {
-//     for (var i = 0; i < hours.length; i++) {
-//       this.randCustomersPerHour.push(Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
-//     }
-//   }
-// };
+var seatacAirport = {
+  minCustPerHour: 3,
+  maxCustPerHour: 24,
+  avgCookiesPerCust: 1.2,
+  randCustomersPerHour: [],
+  totalCookiesPerHour: [],
+  totalDailySalesPerHour: 0,
+  locationName: 'Seatac Airport',
+  calcRandCustomersPerHour: function(){
+    for (var i = 0; i < hours.length; i++) {
+      this.randCustomersPerHour.push(Math.ceil(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
+      console.log(this.randCustomersPerHour[i]);
+    }
+  },
+  calcTotalCookiesPerHour: function(){
+    this.calcRandCustomersPerHour();
+    for (var j = 0; j < hours.length; j++) {
+      this.totalCookiesPerHour.push(Math.ceil(this.randCustomersPerHour[j] * this.avgCookiesPerCust));
+      console.log(this.totalCookiesPerHour[j]);
+      this.totalDailySalesPerHour += this.totalCookiesPerHour[j];
+    }
+  },
+};
+
+seatacAirport.calcRandCustomersPerHour();
+seatacAirport.calcTotalCookiesPerHour();
+
+function seatacAirportResults () {
+  for (var k = 0; k < hours.length; k++) {
+    var totalCookiesPerHour = document.getElementById('seatacAirport');
+    var seatacAirportLi = document.createElement('li');
+    seatacAirportLi.textContent = hours[k] + ': ' + seatacAirport.totalCookiesPerHour[k] + ' cookies';
+    console.log(totalCookiesPerHour);
+    totalCookiesPerHour.appendChild(seatacAirportLi);
+  };
+  seatacAirportLi.textContent = 'Total cookies for the day is ' + seatacAirport.totalDailySalesPerHour + '.';
+  totalCookiesPerHour.appendChild(seatacAirportLi);
+}
+
+seatacAirportResults();
+
+console.log(seatacAirport);
 //
 // //Seattle Center
 // var seattleCenter = {
