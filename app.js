@@ -1,5 +1,9 @@
 'use strict';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b86115e89083d0916b3aea253374ae511cedb4ca
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 //First and Pike
@@ -79,7 +83,11 @@ function seatacAirportResults () {
     console.log(totalCookiesSoldPerHour);
     totalCookiesSoldPerHour.appendChild(seatacAirportLi);
   };
+<<<<<<< HEAD
   seatacAirportLi.textContent = 'Total Cookies Sold Today: ' + seatacAirport.totalDailyCookiesSold;
+=======
+  seatacAirportLi.textContent = 'Total Cookies Sold Today: ' + firstAndPike.totalDailyCookiesSold;
+>>>>>>> b86115e89083d0916b3aea253374ae511cedb4ca
   totalCookiesSoldPerHour.appendChild(seatacAirportLi);
 }
 seatacAirportResults();
@@ -120,7 +128,11 @@ function seattleCenterResults () {
     console.log(totalCookiesSoldPerHour);
     totalCookiesSoldPerHour.appendChild(seattleCenterLi);
   };
+<<<<<<< HEAD
   seattleCenterLi.textContent = 'Total Cookies Sold Today: ' + seattleCenter.totalDailyCookiesSold;
+=======
+  seattleCenterLi.textContent = 'Total Cookies Sold Today: ' + firstAndPike.totalDailyCookiesSold;
+>>>>>>> b86115e89083d0916b3aea253374ae511cedb4ca
   totalCookiesSoldPerHour.appendChild(seattleCenterLi);
 }
 seattleCenterResults();
@@ -161,7 +173,11 @@ function capitolHillResults () {
     console.log(totalCookiesSoldPerHour);
     totalCookiesSoldPerHour.appendChild(capitolHillLi);
   };
+<<<<<<< HEAD
   capitolHillLi.textContent = 'Total Cookies Sold Today: ' + capitolHill.totalDailyCookiesSold;
+=======
+  capitolHillLi.textContent = 'Total Cookies Sold Today: ' + firstAndPike.totalDailyCookiesSold;
+>>>>>>> b86115e89083d0916b3aea253374ae511cedb4ca
   totalCookiesSoldPerHour.appendChild(capitolHillLi);
 }
 capitolHillResults();
@@ -202,7 +218,11 @@ function alkiResults () {
     console.log(totalCookiesSoldPerHour);
     totalCookiesSoldPerHour.appendChild(alkiLi);
   };
+<<<<<<< HEAD
   alkiLi.textContent = 'Total Cookies Sold Today: ' + alki.totalDailyCookiesSold;
+=======
+  alkiLi.textContent = 'Total Cookies Sold Today: ' + firstAndPike.totalDailyCookiesSold;
+>>>>>>> b86115e89083d0916b3aea253374ae511cedb4ca
   totalCookiesSoldPerHour.appendChild(alkiLi);
 }
 alkiResults();
