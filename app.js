@@ -1,229 +1,108 @@
 'use strict';
 
-<<<<<<< HEAD
-=======
+var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+var allOfMyStores = [];
+var salesPerHour = [];
+var totalSoldPerLocation = 0;
 
->>>>>>> b86115e89083d0916b3aea253374ae511cedb4ca
-var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+new Store('1st and Pike', 23, 65, 6.3);
+new Store('Seattle Airport', 3, 24, 1.2);
+new Store('Seattle Center', 11, 38, 3.7);
+new Store('Capitol Hill', 20, 38, 2.3);
+new Store('Alki', 2, 16, 3, 4.6);
+// var table = document.getElementById('stores');
 
-//First and Pike
-var firstAndPike = {
-  minCustPerHour: 23,
-  maxCustPerHour: 65,
-  avgCookiesPerCust: 6.3,
-  randCustomersPerHour: [],
-  totalCookiesSoldPerHour: [],
-  totalDailyCookiesSold: 0,
-  locationName: '1st and Pike',
-  calcRandCustomersPerHour: function(){
-    for (var i = 0; i < hours.length; i++) {
-      this.randCustomersPerHour.push(Math.ceil(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
-      console.log(this.randCustomersPerHour[i]);
-    }
-  },
-  calctotalCookiesSoldPerHour: function(){
-    this.calcRandCustomersPerHour();
-    for (var j = 0; j < hours.length; j++) {
-      this.totalCookiesSoldPerHour.push(Math.ceil(this.randCustomersPerHour[j] * this.avgCookiesPerCust));
-      console.log(this.totalCookiesSoldPerHour[j]);
-      this.totalDailyCookiesSold += this.totalCookiesSoldPerHour[j];
-    }
-  },
+
+function Store(minCustPerHour, maxCustPerHour, avgCookiesPerCust, location) {
+  this.minCustPerHour = minCustPerHour;
+  this.maxCustPerHour = maxCustPerHour;
+  this.avgCookiesPerCust = avgCookiesPerCust;
+  this.location = location;
+  this.hours = hours;
+  this.randCustomersPerHour = [];
+  this.totalCookiesSoldPerHour = [];
+  this.totalDailyCookiesSold = 0;
+};
+this.calcRandCustomersPerHour = function(){
+  for (var i = 0; i < hours.length; i++) {
+    this.randCustomersPerHour.push(Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
+  }
+  this.calcRandCustomersPerHour();
+};
+this.calctotalCookiesSoldPerHour = function(){
+  for (var i = 0; i < hours.length; i++) {
+    this.totalCookiesSoldPerHour.push(Math.ceil(this.randCustomersPerHour[i] * this.avgCookiesPerCust));
+    this.totalDailyCookiesSold += this.totalCookiesSoldPerHour[i];
+  }
+  //totalCookiesSoldPerHour
 };
 
-firstAndPike.calcRandCustomersPerHour();
-firstAndPike.calctotalCookiesSoldPerHour();
-
-function firstAndPikeResults () {
-  for (var k = 0; k < hours.length; k++) {
-    var totalCookiesSoldPerHour = document.getElementById('firstAndPike');
-    var firstAndPikeLi = document.createElement('li');
-    firstAndPikeLi.textContent = hours[k] + ': ' + firstAndPike.totalCookiesSoldPerHour[k] + ' cookies';
-    console.log(totalCookiesSoldPerHour);
-    totalCookiesSoldPerHour.appendChild(firstAndPikeLi);
-  };
-  firstAndPikeLi.textContent = 'Total Cookies Sold Today: ' + firstAndPike.totalDailyCookiesSold;
-  totalCookiesSoldPerHour.appendChild(firstAndPikeLi);
-}
-firstAndPikeResults();
-console.log(firstAndPike);
-
-//SeaTac Airport
-var seatacAirport = {
-  minCustPerHour: 3,
-  maxCustPerHour: 24,
-  avgCookiesPerCust: 1.2,
-  randCustomersPerHour: [],
-  totalCookiesSoldPerHour: [],
-  totalDailyCookiesSold: 0,
-  locationName: 'Seatac Airport',
-  calcRandCustomersPerHour: function(){
-    for (var i = 0; i < hours.length; i++) {
-      this.randCustomersPerHour.push(Math.ceil(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
-      console.log(this.randCustomersPerHour[i]);
-    }
-  },
-  calctotalCookiesSoldPerHour: function(){
-    this.calcRandCustomersPerHour();
+function renderTableB() {
+  var tableDataDisplay = document.getElementById('salesTable');
+  for (var i = 0; i < hours.length; i++) {
+    var trEl = document.createElement('tr');
+    var tdEl = document.createElement('td');
+    tdEl.textContent = allOfMyStores[i]; //locations here right??
+    trEl.appendChild(tdEl);
+      //totalCookiesSoldPerHour
     for (var j = 0; j < hours.length; j++) {
-      this.totalCookiesSoldPerHour.push(Math.ceil(this.randCustomersPerHour[j] * this.avgCookiesPerCust));
-      console.log(this.totalCookiesSoldPerHour[j]);
-      this.totalDailyCookiesSold += this.totalCookiesSoldPerHour[j];
+      tdEl = document.createElement('td');
+      tdEl.textContent = allOfMyStores[i].totalCookiesSoldPerHour[j];
+      trEl.appendChild(tdEl);
     }
-  },
+    //totalDailyCookiesSold
+    tdEl = document.createElement('td');
+    tdEl.textContent = allOfMyStores[i].totalDailyCookiesSold[k];
+    trEl.appendChild(tdEl);
+  }
+  //How do I call this?? With a function? Too many functions?!!!!!!
+  tableDataDisplay.appendChild(trEl);
+  this.calctotalCoookiesSoldPerHour();
+  this.renderTable();
+  allOfMyStores.push(this);
 };
-seatacAirport.calcRandCustomersPerHour();
-seatacAirport.calctotalCookiesSoldPerHour();
 
-function seatacAirportResults () {
-  for (var k = 0; k < hours.length; k++) {
-    var totalCookiesSoldPerHour = document.getElementById('seatacAirport');
-    var seatacAirportLi = document.createElement('li');
-    seatacAirportLi.textContent = hours[k] + ': ' + seatacAirport.totalCookiesSoldPerHour[k] + ' cookies';
-    console.log(totalCookiesSoldPerHour);
-    totalCookiesSoldPerHour.appendChild(seatacAirportLi);
-  };
-<<<<<<< HEAD
-  seatacAirportLi.textContent = 'Total Cookies Sold Today: ' + seatacAirport.totalDailyCookiesSold;
-=======
-  seatacAirportLi.textContent = 'Total Cookies Sold Today: ' + firstAndPike.totalDailyCookiesSold;
->>>>>>> b86115e89083d0916b3aea253374ae511cedb4ca
-  totalCookiesSoldPerHour.appendChild(seatacAirportLi);
-}
-seatacAirportResults();
-console.log(seatacAirport);
+renderTableB();
 
-//Seattle Center
-var seattleCenter = {
-  minCustPerHour: 11,
-  maxCustPerHour: 38,
-  avgCookiesPerCust: 3.7,
-  randCustomersPerHour: [],
-  totalCookiesSoldPerHour: [],
-  totalDailyCookiesSold: 0,
-  locationName: 'Seattle Center',
-  calcRandCustomersPerHour: function(){
-    for (var i = 0; i < hours.length; i++) {
-      this.randCustomersPerHour.push(Math.ceil(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
-      console.log(this.randCustomersPerHour[i]);
-    }
-  },
-  calctotalCookiesSoldPerHour: function(){
-    this.calcRandCustomersPerHour();
-    for (var j = 0; j < hours.length; j++) {
-      this.totalCookiesSoldPerHour.push(Math.ceil(this.randCustomersPerHour[j] * this.avgCookiesPerCust));
-      console.log(this.totalCookiesSoldPerHour[j]);
-      this.totalDailyCookiesSold += this.totalCookiesSoldPerHour[j];
-    }
-  },
+//header: contains total cookies sold at each location
+function renderTableH(){
+  var tableDataDisplay = document.getElementById('salesTable');
+  //a row for the business locations
+  var trEl = document.createElement('tr');
+  //hours
+  var thEl = document.createElement('th');
+  thEl.textContent = allOfMyStores[i].location; //is this right?? or should it be times??
+  trEl.appendChild(thEl);
+  for (var i = 0; i < hours.lengh; i++) {
+    thEl = document.createElement('th');
+    thEl.textContent = hours[i];
+    thEl.textContent = ''; //blank??
+    trEl.appendChild(thEl);
+  }
+  thEl = document.createElement('th');
+  thEl.textContent = 'Location Totals';
+  trEl.appendChild(tdEl);
+  tableDataDisplay.appendChild(trEl);
 };
-seattleCenter.calcRandCustomersPerHour();
-seattleCenter.calctotalCookiesSoldPerHour();
 
-function seattleCenterResults () {
-  for (var k = 0; k < hours.length; k++) {
-    var totalCookiesSoldPerHour = document.getElementById('seattleCenter');
-    var seattleCenterLi = document.createElement('li');
-    seattleCenterLi.textContent = hours[k] + ': ' + seattleCenter.totalCookiesSoldPerHour[k] + ' cookies';
-    console.log(totalCookiesSoldPerHour);
-    totalCookiesSoldPerHour.appendChild(seattleCenterLi);
-  };
-<<<<<<< HEAD
-  seattleCenterLi.textContent = 'Total Cookies Sold Today: ' + seattleCenter.totalDailyCookiesSold;
-=======
-  seattleCenterLi.textContent = 'Total Cookies Sold Today: ' + firstAndPike.totalDailyCookiesSold;
->>>>>>> b86115e89083d0916b3aea253374ae511cedb4ca
-  totalCookiesSoldPerHour.appendChild(seattleCenterLi);
-}
-seattleCenterResults();
-console.log(seattleCenter);
+renderTableH();
 
-//Capitol Hill
-var capitolHill = {
-  minCustPerHour: 20,
-  maxCustPerHour: 38,
-  avgCookiesPerCust: 2.3,
-  randCustomersPerHour: [],
-  totalCookiesSoldPerHour: [],
-  totalDailyCookiesSold: 0,
-  locationName: 'Capitol Hill',
-  calcRandCustomersPerHour: function(){
-    for (var i = 0; i < hours.length; i++) {
-      this.randCustomersPerHour.push(Math.ceil(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
-      console.log(this.randCustomersPerHour[i]);
-    }
-  },
-  calctotalCookiesSoldPerHour: function(){
-    this.calcRandCustomersPerHour();
-    for (var j = 0; j < hours.length; j++) {
-      this.totalCookiesSoldPerHour.push(Math.ceil(this.randCustomersPerHour[j] * this.avgCookiesPerCust));
-      console.log(this.totalCookiesSoldPerHour[j]);
-      this.totalDailyCookiesSold += this.totalCookiesSoldPerHour[j];
-    }
-  },
+//footer: displays the total cookies sold.
+function renderTableF(){
+  var tableDataDisplay = document.getElementById('salesTable');
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  tdEl.textContent = 'Total Cookies'; //is this right?? or should it be simply total??
+  trEl.appendChild(tdEl);
+  for (var i = 0; i < hours.lengh; i++) {
+    tdEl = document.createElement('td');
+    tdEl.textContent = hours[i];
+    tdEl.textContent = salesPerHour[i];
+    trEl.appendChild(tdEl);
+  }
+  tdEl.textContent = totalSoldPerLocation;
+  trEl.appendChild(tdEl);
+  tableDataDisplay.appendChild(trEl);
 };
-capitolHill.calcRandCustomersPerHour();
-capitolHill.calctotalCookiesSoldPerHour();
 
-function capitolHillResults () {
-  for (var k = 0; k < hours.length; k++) {
-    var totalCookiesSoldPerHour = document.getElementById('capitolHill');
-    var capitolHillLi = document.createElement('li');
-    capitolHillLi.textContent = hours[k] + ': ' + capitolHill.totalCookiesSoldPerHour[k] + ' cookies';
-    console.log(totalCookiesSoldPerHour);
-    totalCookiesSoldPerHour.appendChild(capitolHillLi);
-  };
-<<<<<<< HEAD
-  capitolHillLi.textContent = 'Total Cookies Sold Today: ' + capitolHill.totalDailyCookiesSold;
-=======
-  capitolHillLi.textContent = 'Total Cookies Sold Today: ' + firstAndPike.totalDailyCookiesSold;
->>>>>>> b86115e89083d0916b3aea253374ae511cedb4ca
-  totalCookiesSoldPerHour.appendChild(capitolHillLi);
-}
-capitolHillResults();
-console.log(capitolHill);
-
-//Alki
-var alki = {
-  minCustPerHour: 2,
-  maxCustPerHour: 16,
-  avgCookiesPerCust: 4.6,
-  randCustomersPerHour: [],
-  totalCookiesSoldPerHour: [],
-  totalDailyCookiesSold: 0,
-  locationName: 'Alki',
-  calcRandCustomersPerHour: function(){
-    for (var i = 0; i < hours.length; i++) {
-      this.randCustomersPerHour.push(Math.ceil(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
-      console.log(this.randCustomersPerHour[i]);
-    }
-  },
-  calctotalCookiesSoldPerHour: function(){
-    this.calcRandCustomersPerHour();
-    for (var j = 0; j < hours.length; j++) {
-      this.totalCookiesSoldPerHour.push(Math.ceil(this.randCustomersPerHour[j] * this.avgCookiesPerCust));
-      console.log(this.totalCookiesSoldPerHour[j]);
-      this.totalDailyCookiesSold += this.totalCookiesSoldPerHour[j];
-    }
-  },
-};
-alki.calcRandCustomersPerHour();
-alki.calctotalCookiesSoldPerHour();
-
-function alkiResults () {
-  for (var k = 0; k < hours.length; k++) {
-    var totalCookiesSoldPerHour = document.getElementById('alki');
-    var alkiLi = document.createElement('li');
-    alkiLi.textContent = hours[k] + ': ' + alki.totalCookiesSoldPerHour[k] + ' cookies';
-    console.log(totalCookiesSoldPerHour);
-    totalCookiesSoldPerHour.appendChild(alkiLi);
-  };
-<<<<<<< HEAD
-  alkiLi.textContent = 'Total Cookies Sold Today: ' + alki.totalDailyCookiesSold;
-=======
-  alkiLi.textContent = 'Total Cookies Sold Today: ' + firstAndPike.totalDailyCookiesSold;
->>>>>>> b86115e89083d0916b3aea253374ae511cedb4ca
-  totalCookiesSoldPerHour.appendChild(alkiLi);
-}
-alkiResults();
-console.log(alki);
+renderTableF();
