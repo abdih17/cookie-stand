@@ -55,7 +55,7 @@ function makeHeaderRow() {
   var rowElement = document.createElement('tr');
 
   var headerCell = document.createElement('th');// far left cells
-  headerCell.textContent = '' ;
+  headerCell.textContent = '';
   rowElement.appendChild(headerCell);
 
   for (var i = 0; i < hours.length; i++) { // middle cells
@@ -112,17 +112,93 @@ makeHeaderRow();
 renderAllLocations();
 makeFooterRow();
 
-function handleCommentSubmit(event) {
-  event.target.locationName.value;
-  event.target.min.value;
-  event.target.max.value;
-  event.target.avg.value;
+var newStore = document.getElementById('new-store');
+console.log('newStore: ', newStore);
 
-  console.log('log of the event object', event);
-  console.log('log of the event.target', event.target);
-  console.log('log of the event.target.min', event.target.min);
-  console.log('log of the event.target.min', event.target.min);
-  console.log('log of the event.target.says.value', event.target.says.value);
-};
-  event.handleCommentSubmit();
+// newStore.addEventListener('submit', handleCommentSubmit); //runs a funtion in response to an event.
+
+function handleCommentSubmit(event) {
+  console.log('HELLO WORLD');
   event.preventDefault();
+  console.log(event.target);
+
+  var locationName = event.target.store.value;
+  var min = parseInt(event.target.minimum.value);
+  var max = parseInt(event.target.maximum.value);
+  var avg = parseInt(event.target.average.value);
+
+  console.log(locationName, min, max, avg);
+
+  if (store === null || min === null || max === null || avg === null) {
+    alert ('You did fill out your form, please try again.');
+    return;
+  }
+
+  clearInputs(event);
+
+  var sameName = false;
+
+  for (var i = 0; i < allLocations.length; i++) {
+    console.log(i);
+    if (locationName === allLocations[i].locationName) {
+      sameName = true;
+      console.log('SAME NAME EXISTED', locationName, sameName);
+      break;
+    }
+  };
+
+  if (sameName === false) {
+    console.log('sameName: ', sameName, '\nlocationName: ', locationName);
+    var newStoreRow = new Store(locationName, min, max, avg);
+  }
+  var clearTable = document.getElementById('salesDataTable');
+  clearTable.innerHTML = '';
+  makeHeaderRow();
+  renderAllLocations();
+  makeFooterRow();
+  // console.log('log of the event object', event);
+  // console.log('log of the event.target', event.target);
+  // console.log('log of the event.target.min', event.target.min);
+  // console.log('log of the event.target.min', event.target.min);
+  // console.log('log of the event.target.says.value', event.target.says.value);
+};
+
+function clearInputs(event) {
+  event.target.store.value = null;
+  event.target.minimum.value = null;
+  event.target.maximum.value = null;
+  event.target.average.value = null;
+}
+
+newStore.addEventListener('submit', handleCommentSubmit);
+
+// newStore.addEventListener('submit', formSubmithandler);
+//
+// function formSubmithandler(e) {
+//   console.log(e);
+//   e.preventDefault();
+//
+//   var locationName = event.target.store.value;
+//   var min = parseInt(event.target.minimum.value);
+//   var max = parseInt(event.target.maximum.value);
+//   var avg = parseInt(event.target.average.value);
+//
+//   console.log(store, min, max, avg);
+//   clearInputs(event);
+//
+//   var sameName = false;
+//   console.log('sameName: ', sameName);
+//   console.log('allLocations: ', allLocations);
+//
+//   for (var i = 0; i < allLocations.length; i++) {
+//     if (locationName === allLocations[i].locationName) {
+//       sameName = true;
+//     }
+//   };
+//   console.log('sameName: ', sameName);
+//
+//   if (sameName === false) {
+//     var newStoreRow = new Store(store, min, max, avg);
+//   }
+//
+// }
