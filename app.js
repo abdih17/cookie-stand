@@ -50,6 +50,12 @@ function Store(locationName, minCustPerHour, maxCustPerHour, avgCookiesPerCust) 
   allLocations.push(this);
 };
 
+new Store('1st and Pike', 23, 65, 6.3);
+new Store('Seattle Airport', 3, 24, 1.2);
+new Store('Seattle Center', 11, 38, 3.7);
+new Store('Capitol Hill', 20, 38, 2.3);
+new Store('Alki', 2, 16, 3, 4.6);
+
 function makeHeaderRow() {
   var rowElement = document.createElement('tr');
 
@@ -64,7 +70,7 @@ function makeHeaderRow() {
   }
 
   var dataCell = document.createElement('td'); //far right cells
-  dataCell.textContent = 'totals';
+  dataCell.textContent = 'Totals';
   rowElement.appendChild(dataCell);
 
   salesDataTable.appendChild(rowElement);
@@ -101,15 +107,7 @@ function makeFooterRow() {
   salesDataTable.appendChild(rowElement);
 };
 
-new Store('1st and Pike', 23, 65, 6.3);
-new Store('Seattle Airport', 3, 24, 1.2);
-new Store('Seattle Center', 11, 38, 3.7);
-new Store('Capitol Hill', 20, 38, 2.3);
-new Store('Alki', 2, 16, 3, 4.6);
-
 makeHeaderRow();
 renderAllLocations();
 
- //list the times across the top
-// loop through the array of objects representing each store location, and call the render method that each location has, so as to display the data in each row.
 makeFooterRow();
