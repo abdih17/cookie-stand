@@ -1,4 +1,5 @@
 'use strict';
+
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 var allLocations = [];
@@ -109,7 +110,18 @@ new Store('Alki', 2, 16, 3, 4.6);
 
 makeHeaderRow();
 renderAllLocations();
-
- //list the times across the top
-// loop through the array of objects representing each store location, and call the render method that each location has, so as to display the data in each row.
 makeFooterRow();
+
+function handleCommentSubmit(event) {
+  event.target.locationName.value;
+  event.target.min.value;
+  event.target.max.value;
+  event.target.avg.value;
+
+  console.log('log of the event object', event);
+  console.log('log of the event.target', event.target);
+  console.log('log of the event.target.says', event.target.says);
+  console.log('log of the event.target.says.value', event.target.says.value);
+};
+  event.handleCommentSubmit();
+  event.preventDefault();
