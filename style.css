@@ -1,3 +1,16 @@
 h1 {
   color:pink;
 }
+
+table {
+  outline: 2px dashed green;
+}
+
+/*tr {
+  outline: 1px solid black;
+}*/
+
+th, td {
+  outline: 1px dashed red;
+  padding: 3px;
+}
