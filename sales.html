@@ -1,56 +1,37 @@
-<!DOCTYPE html>
-
 <html>
 
 <head>
-<title>Sales: Salmon Cookies</title>
-<link rel="stylesheet" href="style.css">
-<link href="style.css" rel="stylesheet">
+  <title>Salmon Cookie Stores</title>
+  <link rel="stylesheet" href="salesStyle.css">
+  <link href="https://fonts.googleapis.com/css?family=Amaranth" rel="stylesheet">
 </head>
 
-  <body>
+<body>
+  <header>Patty's Sales Information</header>
 
-    <header>
-      <h1>Pat's Cookie Stand Sales</h1>
-    </header>
+  <table id="sales-table"><table>
 
-    <form id="new-store">
-
+  <form id="newstoresubmissionform">
     <fieldset>
-      <legend class="highlight">Sales Data Sets</legend>
+      <legend>Add/Update Store</legend>
 
-    <!-- <div> -->
-      <label for="store">Name:</label>
-      <input id="store" type="text" name="store" placeholder="Store Name"/>
-    <!-- </div> -->
+      <label for="location">Store Location:</label>
+      <input name="location" type="text" />
 
-    <!-- <div> -->
-      <label for="min">Minimum:</label>
-      <input id="min" type="text" name="minimum" placeholder="Minimum"/>
-    <!-- </div> -->
+      <label for="min">Minimum customers per hour:</label>
+      <input name="min" type="text" size="10" />
 
-    <!-- <div> -->
-      <label for="max">Maximum:</label>
-      <input id="max" type="text" name="maximum" placeholder="Maximum"/>
-    <!-- </div> -->
+      <label for="max">Maximum customers per hour:</label>
+      <input name="max" type="text" size="10" />
 
-    <!-- <div> -->
-      <label for="avg">Average:</label>
-      <input id="avg" type="text" name="average" placeholder="Average"/>
-    <!-- </div> -->
+      <label for="average">Average cookies per customer:</label>
+      <input name="average" type="text" size="10" />
 
-      <!-- <label for="says">Comment: </label>
-      <input name="says" type="text" size="50" /> -->
-
-      <button id="submit" type="submit">Submit</button>
+      <button type="sumbit">Add/Update entry</button>
     </fieldset>
   </form>
 
-  <button id="clear-chat-list">Clear all!</button>
-
-    <table id="salesDataTable"></table>
-    <script src="app.js"></script>
-
-  </body>
+  <script src="app.js"></script>
+</body>
 
 </html>
